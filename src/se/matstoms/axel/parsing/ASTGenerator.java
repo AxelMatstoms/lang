@@ -1,6 +1,7 @@
 package se.matstoms.axel.parsing;
 
 import se.matstoms.axel.exceptions.LanguageException;
+import se.matstoms.axel.expressions.BinaryExpression;
 import se.matstoms.axel.expressions.CodeExpression;
 import se.matstoms.axel.expressions.Expression;
 import se.matstoms.axel.expressions.ValueExpression;
@@ -20,12 +21,9 @@ import java.util.HashMap;
 public class ASTGenerator {
     private TokenStream tStream;
     private HashMap<String, Integer> precedence;
-    //private ArrayList<Pair<Types, Class<? extends Value>>> types;
     private HashMap<String, Class<? extends Value>> types;
     private HashMap<String, Operator.DualArg<? extends Value, ? extends Value, ? extends Value>> dualArgOps;
     private HashMap<String, Operator.SingleArg<? extends Value, ? extends Value>> singleArgOps;
-    //private ArrayList<Pair<String, Operator.DualArg<? extends Value, ? extends Value, ? extends Value>>> dualArgOps;
-    //private ArrayList<Pair<String, Operator.SingleArg<? extends Value, ? extends Value>>> singleArgOps;
     private ArrayList<Pair<String, Keyword>> keywords;
 
     public ASTGenerator() {
@@ -64,6 +62,10 @@ public class ASTGenerator {
     private Expression parseExpression() {
 
         return new ValueExpression(new Number(2));
+    }
+
+    private Expression parseBinary(Token left, int myPrec) {
+
     }
 
     private void skipPunc(char punc) {

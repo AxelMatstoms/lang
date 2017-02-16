@@ -15,6 +15,6 @@ public class Main {
         }*/
 
         Tokenizer p = new Tokenizer(new ProgramStream("1337.420"));
-        System.out.println(p.parseNumber().toString());
+        //System.out.println(p.parseNumber().toString());
     }
 }
