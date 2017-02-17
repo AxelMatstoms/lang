@@ -5,26 +5,26 @@ package se.matstoms.axel.types;
  */
 public class Number extends Value {
     private long intValue;
-    private double floatValue;
+    private double doubleValue;
     boolean preferInt;
 
 
     public Number(String input) {
-        this.floatValue = Float.parseFloat(input);
-        this.intValue = (int) this.floatValue;
-        this.preferInt = this.intValue == this.floatValue;
+        this.doubleValue = Float.parseFloat(input);
+        this.intValue = (int) this.doubleValue;
+        this.preferInt = this.intValue == this.doubleValue;
     }
 
-    public Number(int i) {
+    public Number(long i) {
         this.intValue = i;
-        this.floatValue = (float) this.intValue;
-        this.preferInt = this.intValue == this.floatValue;
+        this.doubleValue = (float) this.intValue;
+        this.preferInt = this.intValue == this.doubleValue;
     }
 
-    public Number(float f) {
-        this.floatValue = f;
-        this.intValue = (int) this.floatValue;
-        this.preferInt = this.intValue == this.floatValue;
+    public Number(double d) {
+        this.doubleValue = d;
+        this.intValue = (int) this.doubleValue;
+        this.preferInt = this.intValue == this.doubleValue;
     }
 
     public long getIntValue() {
@@ -32,12 +32,12 @@ public class Number extends Value {
     }
 
     public double getFloatValue() {
-        return this.floatValue;
+        return this.doubleValue;
     }
 
     @Override
     public AString toAString() {
-        return new AString(preferInt ? Long.toString(intValue) : Double.toString(floatValue));
+        return new AString(preferInt ? Long.toString(intValue) : Double.toString(doubleValue));
     }
 
     @Override
@@ -47,6 +47,6 @@ public class Number extends Value {
 
     @Override
     public String toString() {
-        return preferInt ? Long.toString(intValue) : Double.toString(floatValue);
+        return preferInt ? Long.toString(intValue) : Double.toString(doubleValue);
     }
 }

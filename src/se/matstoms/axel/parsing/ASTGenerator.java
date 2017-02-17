@@ -24,15 +24,19 @@ public class ASTGenerator {
     private HashMap<String, Class<? extends Value>> types;
     private HashMap<String, Operator.DualArg<? extends Value, ? extends Value, ? extends Value>> dualArgOps;
     private HashMap<String, Operator.SingleArg<? extends Value, ? extends Value>> singleArgOps;
-    private ArrayList<Pair<String, Keyword>> keywords;
+    private HashMap<String, Keyword> keywords;
 
     public ASTGenerator() {
         this.precedence = new HashMap<>();
+        this.types = new HashMap<>();
+        this.dualArgOps = new HashMap<>();
+        this.singleArgOps = new HashMap<>();
+        this.keywords = new HashMap<>();
     }
 
     public ASTGenerator(TokenStream tStream) {
+        this();
         this.tStream = tStream;
-        this.precedence = new HashMap<>();
     }
 
     public void setTokenStream(TokenStream tStream) {
@@ -65,7 +69,10 @@ public class ASTGenerator {
     }
 
     private Expression parseBinary(Token left, int myPrec) {
-
+        Token t = isOperator();
+        if(t != null) {
+            
+        }
     }
 
     private void skipPunc(char punc) {
@@ -83,5 +90,14 @@ public class ASTGenerator {
     private boolean isPunc(char c) {
         Token tok = tStream.peek();
         return tok.tokenType == TokenType.PNC && tok.value.equals(c);
+    }
+    
+    private Token isOperator() {
+        Token t = tStream.peek();
+        if(t.tokenType == TokenType.OPR) {
+            return t;
+        } else {
+            return null;
+        }
     }
 }

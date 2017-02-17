@@ -8,6 +8,6 @@ import se.matstoms.axel.types.Number;
 public class Plus extends Operator.DualArg<Number, Number, Number> {
     @Override
     public Number operate(Number arg1, Number arg2) {
-        return new Number(arg1.getFloatValue()+ arg2.getFloatValue());
+        return new Number(arg1.getFloatValue() + arg2.getFloatValue());
     }
 }
